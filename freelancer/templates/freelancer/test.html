@@ -1,0 +1,14 @@
+{% extends 'freelancer/base.html' %}
+
+{% block content%}
+<br><br>
+<form method="POST">
+	{% csrf_token %}
+	<p>Jobs</p>
+	{{form.as_p}}
+	
+	<button type="submit">Submit</button>
+
+</form>
+{{forminput}}
+{% endblock %}

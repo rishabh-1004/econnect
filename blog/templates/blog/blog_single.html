@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<style type="text/css">
+.comment {
+    overflow: hidden;
+    padding: 0 0 1em;
+    border-bottom: 1px solid #ddd;
+    margin: 0 0 1em;
+    *zoom: 1;
+}
+
+.comment-img {
+    float: left;
+    margin-right: 33px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.comment-img img {
+    display: block;
+}
+
+.comment-body {
+    overflow: hidden;
+}
+
+.comment .text {
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    background: #fff;
+}
+
+.comment .text p:last-child {
+    margin: 0;
+}
+
+.comment .attribution {
+    margin: 0.5em 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Decoration */
+
+.comments,
+.comment {
+    position: relative;
+}
+
+.comments:before,
+.comment:before,
+.comment .text:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 65px;
+}
+
+.comments:before {
+    width: 3px;
+    top: -20px;
+    bottom: -20px;
+    background: rgba(0,0,0,0.1);
+}
+
+.comment:before {
+    width: 9px;
+    height: 9px;
+    border: 3px solid #fff;
+    border-radius: 100px;
+    margin: 16px 0 0 -6px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2), inset 0 1px 1px rgba(0,0,0,0.1);
+    background: #ccc;
+}
+
+.comment:hover:before {
+    background: orange;
+}
+
+.comment .text:before {
+    top: 18px;
+    left: 78px;
+    width: 9px;
+    height: 9px;
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+    border-color: #e5e5e5;
+    background: #fff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+}  
+
+
+</style>
+
+
+
+
+
+
+
+<div class="container">
+    <center><h2>{{blog.title}}</h2></center>
+    <center><div class="col-md-12">
+   		 {% if blog.images %}
+   		 <img src="{{blog.image.url}}" style="height:500px;width:80%;">
+   		 {% else %}
+   		 <img src="{% static 'default.jpg'%}" style="height:500px;width:80%;">
+   		 {% endif %}
+
+    </div></center>
+    <p>Created  by {{blog.user.first_name}}<p>
+    <center><div class="col-md-10" style="margin-left:10%;margin-top:5%;">{{blog.body}}</div></center>
+</div>
+<br><br>
+<div class="col-md-12"><hr></div>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <center><h3>Comments</h3>
+      <br><br>
+           <section class="comments">
+              {% if comments%}
+              {% for comment in comments %}
+              
+              <article class="comment">
+                  <a class="comment-img" href="#non">
+                {% if comment.owner.blogprofile.image.url %}
+                  <img src="{{comment.owner.blogprofile.image.url}}" alt="" width="50" height="50">
+                {% else %}
+                    <img src="{% static 'default_images/default_user.jpg'%}" alt="" width="50" height="50">
+
+                {% endif %}
+                  </a>
+                  <div class="comment-body">
+                    <div class="text">
+                       {{comment.comment}}
+                    </div>
+                    <p class="attribution">by <a href="#non">{{comment.owner.username}}</a> at 14:23pm, 4 Dec 2015</p>
+                  </div>
+              </article>
+              {% endfor %}
+              {% endif %}
+          </section>
+          
+          {% if user %}
+          <br>
+           <div class="input-group input-group-sm chatMessageControls">
+            <form method="post">
+            {% csrf_token %}
+              {{form.as_p}}   
+              <span class="input-group-btn">
+              <button id="clearMessageButton" class="btn btn-default" type="button">Clear</button>
+              <button id="sendMessageButton" class="btn btn-primary" type="submit"><i class="fa fa-send"></i>Send</button>
+              </span>
+          </form>
+            
+           </div>
+          {% else %}
+          <p> <a href="account:login">Login</a> To Comment</p>
+          {% endif %}
+    </div>
+    </div>
+  </center>
+</div>
+
+{% endblock %}

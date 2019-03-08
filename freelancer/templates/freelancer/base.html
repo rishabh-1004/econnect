@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load staticfiles%}
+	<title>Startups</title>
+	<meta charset="utf-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+             <link href=' http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+              <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+             <script src="jquery-3.1.1.min.js"></script>
+           <link rel="stylesheet" type="text/css" href="{% static 'feed.css' %}">
+         </head>
+</head>
+<body>
+    <!--NAVIGATION-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+                 <!-- Brand and toggle get grouped for better mobile display -->
+                     <div class="navbar-header">
+                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                          <span class="sr-only">Toggle navigation</span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          </button>
+                          <a class="navbar-brand" href="#">E-Connect</a>
+                     </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+                         <form class="navbar-form navbar-left">
+                             <div class="form-group">
+                                <input type="text" class="form-control input-search" placeholder="Discover">
+                             </div>
+                                 <button type="submit" class="btn btn-default btn-search"><i class="glyphicon glyphicon-search"></i></button>
+                         </form>
+      <ul class="nav navbar-nav navbar-right">
+                  <li><a href="#">
+        	         <div class="icon-set"><span class="glyphicon glyphicon-envelope"></span>
+        	            <span class="icon-title hidden-xs">Messages</span></div>
+
+                     </a></li>
+         
+                    <li class="dropdown">
+                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                      <div class="icon-set">
+                      <span class="glyphicon glyphicon-user"></span>
+                      <span class="icon-title hidden-xs">Network</span></div></span></a>
+                      <ul class="dropdown-menu">
+                      <li><a href="#">Following</a></li>
+                      <li><a href="#">Follower</a></li>
+                      <li><a href="#">Mentors</a></li>
+                      </ul>
+                   </li>
+                      <li><a href="#">
+         	                    <div class="icon-set">
+         	                         <span class="glyphicon glyphicon-bell"></span>
+        	                          <span class="icon-title hidden-xs">Notification</span></div>
+
+                       </a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <div class="icon-set">
+          <span class="glyphicon glyphicon-th"></span>
+          <span class="icon-title hidden-xs">Workspace</span></div></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+        <li class="dropdown" class="avatar-list-item">
+           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          
+               <img id="pro-pic-top" class="rounded-circle" src="{% static 'startdp.jpg'%}" >
+                   <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">My Profile</a></li>
+                          <li><a href="#">Edit Profile</a></li>
+                           <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                         <li><a href="#">Log-out</a></li>
+                     </ul>
+        </li>
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!--NAVIGATION ENDS-->
+<!--LEFT SIDE CONTENT-->
+<div>
+<div class="main-body pad">
+    <div class="content-data">
+        <div class="profile-panel">
+            <div class="profile-card-top data abc">
+              <div class="back-img" style="background-image: url({% static 'startdp.jpg'%});"> </div>
+                <div class="profile-card-bottom def">
+               	  <img class="pro-pic" src="{% static 'startdp.jpg'%}">
+               	  <h6 class="pro-name">E-Connect</h6>
+               	  <p>Networking Platform for Entrepreneurship</p>
+                </div>
+            </div>
+            <div class="profile-card-top data1 data2 abc">
+              <div class="top-head">
+                <h6 id="about-top">About <small><a href="#">Edit</a></small></h6>
+                <ul>
+                  <li> <span class="glyphicon glyphicon-pencil"></span>  Service<a href="#">  Internet</a></li>
+                  <li> <span class="glyphicon glyphicon-briefcase"></span>  Works<a href="#">  India</a></li>
+                  <li> <span class="glyphicon glyphicon-home"></span>  Office<a href="#">  Bhubaneswar</a></li>
+                  <li> <span class="glyphicon glyphicon-home"></span>  Website<a href="#">  econnect.org.in</a></li>
+                </ul>
+               </div>
+            </div>
+         </div>
+    <div class="center-content">
+      <ul class="media-list media-list-stream mb-3">
+
+      {% block content%}
+
+      {% endblock%}
+      </ul>
+    </div>
+
+    </div>
+</div>
+
+
+<script src="feed.js"></script>
+
+</body>
+</html>

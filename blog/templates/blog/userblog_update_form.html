@@ -1,0 +1,10 @@
+{% extends 'blog/profile_header.html'%}
+
+{% load static %}
+{% block content%}
+<br><br><br>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'blog/profile_header.html' %}
+{% load static %}
+
+{% block content %}
+    <br><br><br><br>
+
+      <div class="panel panel-default col-md-6 col-pull-4" style="margin-left:20%;padding:0px;">
+        <div class="panel-heading" >
+          <h3 class="panel-title">Profile</h3>
+        </div>
+        <div class="panel-body">
+		  {% if profile.image %}    	
+          <img src="{{profile.image.url}}" style="height:300px;width:300px;">
+          
+          {% else %}
+          <img src="{% static 'default_images/default_user.jpg' %}" style="height:300px;width:300px;">
+          {% endif %}
+          <br><br><br>
+		  <p style="display:inline"> Name :&nbsp;&nbsp;</p>
+          <p style="display:inline">{{profile.user.username}}</p>
+          <br><br>
+          <p style="display:inline"> Description :&nbsp;&nbsp;&nbsp;</p>
+          <p style="display:inline">{{profile.description}}</p>
+          <br><br>
+          <p style="display:inline"> City :</p>
+          <p style="display:inline">{{profile.city}}</p>
+          <br><br>
+          <p style="display:inline"> Website :</p>
+          <p style="display:inline">{{profile.website}}</p>
+          <br><br>
+          <p style="display:inline"> Phone :</p>
+          <p style="display:inline">{{profile.phone}}</p>
+          <br><br>
+          <nav aria-label="...">
+            <ul class="pager">
+              <li><a href="{% url 'account:change_password'%}">UPDATE PASSWORD</a></li>
+              <li><a href="{% url 'blog:profile_update' pk=profile.pk %}">EDIT</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+
+
+
+
+{% endblock %}

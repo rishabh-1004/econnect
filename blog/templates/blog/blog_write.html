@@ -1,0 +1,30 @@
+{% extends 'blog/profile_header.html' %}
+{% load static%}
+
+{% block content %}
+<br><br><br>
+<div class="container">
+	<center><h2>Enter Blog</h2></center>
+   <center><div class="col-md-12 ">
+      <form method="post">{% csrf_token %}
+              <div class="form-group">
+          {{form.title}}
+        </div>
+
+            <div class="form-group">
+              {{form.body}}
+            </div>
+            <div class="form-group">
+              {{form.picture}}
+              <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+            </div>
+          <button type="submit" class="btn btn-default" style="background-color:#099688;color:white;">Submit</button>
+          <br><br><br>
+      </form>
+    </div></center>
+
+
+</div>
+
+
+{% endblock %}

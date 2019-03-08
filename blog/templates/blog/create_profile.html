@@ -1,0 +1,16 @@
+{% extends 'blog/profile_header.html' %}
+
+{% block content %}
+<div class="container"> 
+<br><br><br><br>
+<form method="post">
+	{% csrf_token %}
+	{{form.as_p}}
+	<button type="submit">Submit</button>
+
+</form>
+
+
+</div>
+
+{% endblock%}
